@@ -6,18 +6,25 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   :focus {
     outline: none;
     box-shadow: 0 0 0 2px ${(props) => props.theme['green-500']};
     border-radius: 4px;
   }
+  
+  ::selection {
+    background-color: ${(props) => props.theme['green-300']};
+    color: var(--white);
+  }
+
 
   body {
     background-color: ${(props) => props.theme['gray-900']};
     color: ${(props) => props.theme['gray-300']};
+    -webkit-font-smoothing: antialiased;
   }
-  
+
   body, input, textarea, button {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
