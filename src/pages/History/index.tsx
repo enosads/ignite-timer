@@ -1,11 +1,16 @@
 import { HistoryContainer, HistoryList, Status } from './styles'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { CyclesContext } from '../../contexts/CyclesContext'
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
 export function History() {
   const { cycles } = useContext(CyclesContext)
+
+  useEffect(() => {
+    document.title = 'Ignite Timer'
+  }, [])
+
   return (
     <HistoryContainer>
       <h1>Meu histórico</h1>
@@ -25,7 +30,7 @@ export function History() {
                 <td>{cycle.task}</td>
                 <td>{cycle.minutesAmount} minutos</td>
                 <td>
-                  {formatDistanceToNow(cycle.startDate, {
+                  {formatDistanceToNow(new Date(cycle.startDate), {
                     addSuffix: true,
                     locale: ptBR,
                   })}
